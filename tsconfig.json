@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,6 +15,13 @@
     "lib": [
       "es2017",
       "dom"
-    ]
-  }
+    ],
+    "paths": {
+      "@shared/*": ["src/app/shared/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/angular-form-components/index.ts"
+  ]
 }
