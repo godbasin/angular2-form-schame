@@ -39,7 +39,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     dynamicForm: FormGroup;
     customGroup: any = {};
 
-    formErrors = {};
     validationMessages = {};
 
     constructor(private fb: FormBuilder) {
@@ -59,7 +58,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         // Set messages for validations.
         this.customGroup = []
         this.config.forEach((control: ICustomControl, i) => {
-            this.formErrors[control.key] = '';
             this.validationMessages[control.key] = {};
             const validations = [];
             // Because FormBuilder still validate it even the element displays none.
@@ -77,7 +75,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
             }
             // Set validation with default value. (this.model[control.key])
             this.customGroup[control.key] = [this.model[control.key], validations];
-            console.log('updateConfig', this.customGroup)
         });
         this.createForm();
     }
@@ -94,24 +91,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         if (!this.dynamicForm) {
             return;
         }
-        console.log('onValueChanged', this.dynamicForm)
         const form = this.dynamicForm;
-        for (const field in this.formErrors) {
-            if (field) {
-                // Clear previous error message (if any)
-                this.formErrors[field] = '';
-                const control = form.get(field);
-                if (control && control.dirty && !control.valid) {
-                    const messages = this.validationMessages[field];
-                    for (const key in control.errors) {
-                        if (key) {
-                            this.formErrors[field] += messages[key] + ' ';
-                        }
-                    }
-                }
-            }
-
-        }
         // Use Object.assign() without changing the link.
         this.model = Object.assign(this.model, {...this.dynamicForm.value}, {valid: this.dynamicForm.valid});
     }

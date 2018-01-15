@@ -14,11 +14,12 @@ import {
     DateTimePickerComponent,
     SelectWithInputComponent,
     OnFocusLostDirective // For SelectWithInputComponent
-} from 'angular-form-components';
+} from './components';
 
 import {DynamicFormComponent} from './components/dynamic-form/dynamic-form.component';
 import {DynamicListComponent} from './components/dynamic-list/dynamic-list.component';
 import {JSONEditorComponent} from './components/json-editor.component';
+import {JsonToHtmlComponent} from './components/json-to-html.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {JSONEditorComponent} from './components/json-editor.component';
     Select2Component,
     SelectWithInputComponent,
     JSONEditorComponent,
+    JsonToHtmlComponent,
 
     OnFocusLostDirective
   ],
@@ -52,6 +54,7 @@ import {JSONEditorComponent} from './components/json-editor.component';
     Select2Component,
     SelectWithInputComponent,
     JSONEditorComponent,
+    JsonToHtmlComponent,
 
     OnFocusLostDirective
   ],

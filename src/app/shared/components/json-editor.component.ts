@@ -66,7 +66,7 @@ export class JSONEditorComponent implements AfterViewInit {
   writeValue(value: string): void {
     console.log("writeValue", { value });
     if (this.editor && value !== this.model) {
-      if (typeof value === "string") {
+      if (typeof value == "string") {
         try {
           value = JSON.parse(value);
         } catch (e) {}

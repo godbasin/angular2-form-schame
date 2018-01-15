@@ -1,0 +1,9 @@
+<div class="select-with-input" ngFocusLost (onFocusLost)="isOpen = false;">
+    <input [type]="type || 'text'" [(ngModel)]="viewModel" (ngModelChange)="updateModel()" (focus)="isOpen = true;" />
+    <span class="select-with-input__arrow" (click)="isOpen = !isOpen;"><b [ngClass]="isOpen ? 'arrow_up' : 'arrow_down'"></b></span>
+    <div class="select-options" *ngIf="isOpen">
+        <p [hidden]="options && options.length">No options.</p>
+        <p [hidden]="!(options && options.length)" *ngFor="let option of options"
+           (click)="handleSelect(option)" [ngClass]="isSelected(option) ? 'selected' : ''">{{ option.text }}</p>
+    </div>
+</div>
