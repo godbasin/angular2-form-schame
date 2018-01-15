@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ICustomControl} from './shared/components/dynamic-form/dynamic-form.component'
+import {IListFormConfig} from './shared/components/dynamic-list/dynamic-list.component'
 
 const schameMap = {
   'Simple': {
@@ -28,24 +29,49 @@ const schameMap = {
   },'WithValidation': {
     'config': [{
       "validations":[{
-          "type":"required",
-          "message":"required"
+          "type":"required"
       },{
           "type":"minLength",
-          "param":2,
-          "message":"minLength: 2"
+          "param":2
       }],
       "type":"text",
-      "label":"Name",
-      "key":"name"
+      "label":"Username",
+      "key":"username"
   },{
       "validations":[{
-          "type":"email",
-          "message":"email"
+          "type":"email"
       }],
       "type":"text",
       "label":"Email",
       "key":"email"
+  }]
+  },
+  'Array List': {
+    "functions":[
+      "add",
+      "delete",
+      "edit"
+  ],
+  "formConfig":[{
+      "validations":[{
+          "type":"required",
+          "message":"required"
+      }],
+      "type":"text",
+      "label":"name",
+      "key":"Name"
+  },{
+      "validations":[{
+          "type":"required",
+          "message":"required"
+      }],
+      "type":"number",
+      "label":"tel",
+      "key":"Tel"
+  },{
+      "type":"day",
+      "label":"birthday",
+      "key":"birthday"
   }]
   }
 }
@@ -57,6 +83,7 @@ const schameMap = {
 })
 export class AppComponent implements OnInit{
   jsonConfig: string = '';
+  listConfig: IListFormConfig = {};
   formConfig: ICustomControl[] = [];
   schameType: string = 'Simple';
 
@@ -64,12 +91,16 @@ export class AppComponent implements OnInit{
     this.schameType = 'Simple';
     this.formConfig = schameMap[this.schameType].config;
     this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
-    console.log('this.jsonConfig', this.jsonConfig)
   }
 
   changeSchame(val){
-    this.formConfig = schameMap[this.schameType].config;
-    this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
+    if(this.schameType == 'Array List'){
+      this.listConfig = schameMap[this.schameType];
+      this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
+    }else{
+      this.formConfig = schameMap[this.schameType].config;
+      this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
+    }
   }
 
   changeJSON(val){

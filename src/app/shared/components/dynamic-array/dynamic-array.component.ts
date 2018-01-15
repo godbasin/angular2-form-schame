@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, ElementRef} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {ICustomControl} from '@shared/components/dynamic-form/dynamic-form.component';
 import {ObjectCopy, ArrayCopy} from '@shared/tool/object-copy.tool';
 import {customInputAccessor} from '../../class/custom-input.class';
@@ -14,8 +14,8 @@ export interface IListConfig {
 }
 
 export interface IListFormConfig {
-    functions?: string[];                 // ['add', 'edit', 'delete']
-    formConfig?: ICustomControl[];
+    functions: string[];                 // ['add', 'edit', 'delete']
+    formConfig: ICustomControl[];
 }
 
 @Component({
@@ -36,11 +36,6 @@ export class DynamicListComponent implements OnInit, OnChanges {
     private model: any = []; // inner value
     private onChange: (_: any) => void;
     private onTouched: () => void;
-    private el;
-
-    constructor(el:ElementRef) {
-        this.el = el;
-    }
 
     ngOnInit() {
         if (!this.config) {
@@ -77,20 +72,6 @@ export class DynamicListComponent implements OnInit, OnChanges {
         return false;
     }
 
-    // Add or edit one list data.
-    edit(index: number) {
-        this.isEdit = index;
-        if (index > -1) {
-            // If edit, deep copy option into formModel.
-            this.formModel = ObjectCopy(this.model[index]);
-        } else {
-            // If add, clear formModel.
-            this.formModel = {};
-        }
-        this.isShown = true;
-        $(this.el.nativeElement).find('.modal').modal("show");
-    }
-
     // delete one list data
     delete(index: number) {
         this.model.splice(index, 1);
@@ -109,7 +90,6 @@ export class DynamicListComponent implements OnInit, OnChanges {
         }
         this.onChange(this.model);
         this.isShown = false;
-        $(this.el.nativeElement).find('.modal').modal("show");
     }
 
     // Set touched on blur

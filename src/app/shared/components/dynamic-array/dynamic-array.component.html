@@ -1,0 +1,10 @@
+<div class="row" *ngIf="(listConfig && listConfig.content && listConfig.content.length)">
+  <li class="list-group-item" *ngFor="let data of model; let i = index;">
+    <button (ngClick)="delete(i)" *ngIf="hasFunction('delete')" style="position: relative; z-index: 20;" type="button" class="close pull-right">
+      <span aria-hidden="true">×</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <dynamic-form *ngFor="let li of listConfig.content" [config]="formConfig" [(model)]="data[li.key]"></dynamic-form>
+  </li>
+</div>
+<a class="btn btn-info" *ngIf="hasFunction('add')" (click)="edit(-1)">New</a>

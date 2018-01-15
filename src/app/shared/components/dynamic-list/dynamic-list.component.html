@@ -1,7 +1,6 @@
-<a class="btn btn-info" *ngIf="hasFunction('add')" (click)="edit(-1)">New</a>
 <div class="row" *ngIf="(listConfig && listConfig.content && listConfig.content.length)">
-    <div class="col-md-6">
-        <table class="table table-bordered table-striped">
+    <div class="col-md-12">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>NO.</th>
@@ -22,19 +21,20 @@
         </table>
     </div>
 </div>
+<a class="btn btn-info" *ngIf="hasFunction('add')" (click)="edit(-1)">New</a>
 
-<div class="modal" *ngIf="hasFunction('edit') || hasFunction('add')" [hidden]="!isShown">
+<div class="modal fade" *ngIf="hasFunction('edit') || hasFunction('add')" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="isShown = false;"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">{{isEdit > -1 ? 'Edit' : 'New'}}</h4>
             </div>
             <div class="modal-body">
                 <dynamic-form *ngIf="isShown" [config]="formConfig" [(model)]="formModel"></dynamic-form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="isShown = false;">Cancel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" [disabled]="!formModel.valid" (click)="save()">Save</button>
             </div>
         </div>

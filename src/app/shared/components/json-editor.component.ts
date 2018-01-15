@@ -33,7 +33,6 @@ export class JSONEditorComponent implements AfterViewInit {
   // update value when status changed
   setValue(model: any) {
     this.model = JSON.stringify(model);
-    console.log('setValue', {model})
     this.onChange(this.model);
   }
 
@@ -64,7 +63,6 @@ export class JSONEditorComponent implements AfterViewInit {
 
   // Write a new value to the element.
   writeValue(value: string): void {
-    console.log("writeValue", { value });
     if (this.editor && value !== this.model) {
       if (typeof value == "string") {
         try {
