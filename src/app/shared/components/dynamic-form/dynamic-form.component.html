@@ -1,4 +1,4 @@
-<form [formGroup]="dynamicForm" (ngSubmit)="submit()">
+<form [formGroup]="dynamicForm">
   <div *ngFor="let control of config" class="form-group">
     <div>
       <div class="form-group" [ngClass]="{'has-feedback': ['text', 'number'].indexOf(control.type) > -1,'has-success': dynamicForm.controls[control.key].dirty && dynamicForm.controls[control.key].valid, 'has-error': dynamicForm.controls[control.key].dirty && !dynamicForm.controls[control.key].valid }">
@@ -20,12 +20,12 @@
       </div>
     </div>
   </div>
-  <div>
-    <label class="control-label">Modal: </label>
+  <!-- <div>
+    <label class="control-label">Model: </label>
     <pre>{{dynamicForm.value | json}}</pre>
   </div>
   <div>
     <label class="control-label">Form status: </label>
     <pre>{{ dynamicForm.status | json }}</pre>
-  </div>
+  </div> -->
 </form>

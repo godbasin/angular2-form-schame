@@ -109,7 +109,7 @@ export class DynamicListComponent implements OnInit, OnChanges {
         }
         this.onChange(this.model);
         this.isShown = false;
-        $(this.el.nativeElement).find('.modal').modal("show");
+        $(this.el.nativeElement).find('.modal').modal("hide");
     }
 
     // Set touched on blur

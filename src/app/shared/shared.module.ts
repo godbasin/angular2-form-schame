@@ -18,6 +18,7 @@ import {
 
 import {DynamicFormComponent} from './components/dynamic-form/dynamic-form.component';
 import {DynamicListComponent} from './components/dynamic-list/dynamic-list.component';
+import {DynamicArrayComponent} from './components/dynamic-array/dynamic-array.component';
 import {JSONEditorComponent} from './components/json-editor.component';
 import {JsonToHtmlComponent} from './components/json-to-html.component';
 
@@ -35,6 +36,7 @@ import {JsonToHtmlComponent} from './components/json-to-html.component';
     CheckboxWithTextComponent,
     RadioWithTextComponent,
     DynamicListComponent,
+    DynamicArrayComponent,
     Select2Component,
     SelectWithInputComponent,
     JSONEditorComponent,
@@ -51,6 +53,7 @@ import {JsonToHtmlComponent} from './components/json-to-html.component';
     CheckboxWithTextComponent,
     RadioWithTextComponent,
     DynamicListComponent,
+    DynamicArrayComponent,
     Select2Component,
     SelectWithInputComponent,
     JSONEditorComponent,

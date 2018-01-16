@@ -19,11 +19,11 @@ export interface IListFormConfig {
 }
 
 @Component({
-    selector: 'dynamic-list',
-    templateUrl: './dynamic-list.component.html',
-    providers: [customInputAccessor(DynamicListComponent)],
+    selector: 'dynamic-array',
+    templateUrl: './dynamic-array.component.html',
+    providers: [customInputAccessor(DynamicArrayComponent)],
 })
-export class DynamicListComponent implements OnInit, OnChanges {
+export class DynamicArrayComponent implements OnInit, OnChanges {
     @Input() config: IListFormConfig;
     @Input() formModel: any = []; // form default data
 
@@ -39,7 +39,7 @@ export class DynamicListComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         if (!this.config) {
-            console.error('<dynamic-list> should input config.');
+            console.error('<dynamic-array> should input config.');
         }else{
             this.updateConfig();
         }
@@ -55,13 +55,14 @@ export class DynamicListComponent implements OnInit, OnChanges {
     updateConfig() {
         this.formConfig = this.config.formConfig || [];
         this.listConfig.functions = this.config.functions;
-        this.listConfig.content = this.formConfig.map(control => {
+        this.listConfig.content = this.formConfig.map((control, i) => {
             return {
                 key: control.key,
                 label: control.label
             };
         });
-        this.model = [];
+        console.log('updateConfig', this.listConfig.content)
+        this.model = []
     }
 
     // Check if listConfig has the function.
@@ -72,24 +73,17 @@ export class DynamicListComponent implements OnInit, OnChanges {
         return false;
     }
 
+    // add one list data
+    add(){
+        const model = {};
+        this.model.push(model);
+        this.onChange(this.model);
+    }
+
     // delete one list data
     delete(index: number) {
         this.model.splice(index, 1);
         this.onChange(this.model);
-    }
-
-    // Save changes or new list data.
-    save() {
-        // Deep copy formModel.
-        // If in real internet envirenment, we can request new list data without deepcopy.
-        const model = ObjectCopy(this.formModel);
-        if (this.isEdit > -1) {
-            this.model[this.isEdit] = model;
-        } else {
-            this.model.push(model);
-        }
-        this.onChange(this.model);
-        this.isShown = false;
     }
 
     // Set touched on blur

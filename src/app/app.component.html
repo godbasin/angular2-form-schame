@@ -1,8 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-      <dynamic-form *ngIf="schameType != 'Array List'" [config]="formConfig"></dynamic-form>
-      <dynamic-list *ngIf="schameType == 'Array List'" [config]="listConfig"></dynamic-list>
+      <dynamic-form *ngIf="['Simple', 'WithValidation'].indexOf(schameType) > -1" [config]="formConfig" [(model)]="formModel"></dynamic-form>
+      <dynamic-array *ngIf="schameType == 'Array'" [config]="listConfig" [(ngModel)]="listModel"></dynamic-array>
+      <dynamic-list *ngIf="schameType == 'Array List'" [config]="listConfig" [(ngModel)]="listModel"></dynamic-list>
+      <div>
+        <label class="control-label">Model: </label>
+        <pre *ngIf="['Array List', 'Array'].indexOf(schameType) == -1">{{formModel | json}}</pre>
+        <pre *ngIf="['Array List', 'Array'].indexOf(schameType) > -1">{{listModel | json}}</pre>
+      </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
@@ -10,6 +16,7 @@
         <select class="form-control" name="schameType" [(ngModel)]="schameType" (ngModelChange)="changeSchame()">
           <option>Simple</option>
           <option>WithValidation</option>
+          <option>Array</option>
           <option>Array List</option>
         </select>
       </div>
