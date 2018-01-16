@@ -5,7 +5,6 @@ Generate forms from JSON schemas using Angular(v2.0+)!
 [Here to experience.](http://p2n7500x0.bkt.clouddn.com/index.html)
 
 ## How to use
----
 
 ### About the project
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
@@ -20,14 +19,16 @@ npm install -g @angular/cli
 npm install
 ```
 
-## Documentation
----
+# Documentation
 
-### Component Types
-1. `<dynamic-form [config]="formConfig" [(model)]="formModel" />`
+## Component Types
 
-**formConfig: config[]**
-Config to generate form controls, arrays.
+### Form Components
+**component demo**      
+`<dynamic-form [config]="formConfig" [(model)]="formModel" />`      
+
+**formConfig: config[]**      
+Config to generate form controls, arrays.      
 
 - `type`: Form Control Type 
   - 'text' | 'number' | 'select' |'select2'
@@ -50,44 +51,48 @@ Config to generate form controls, arrays.
 - `limit?`: upload image limit
 - `listConfig?`: config for `<dynamic-list>` control
 
-**formModel**
-Form value.
+**formModel**      
+Form value.      
 
-**Form Demo**
+**Form Demo**      
 ![image](http://o905ne85q.bkt.clouddn.com/1516097300%281%29.png)
 
-2. `<dynamic-array [config]="arrayConfig" [(ngModel)]="arrayModel" />`
+### Form Array Components
+**component demo**     
+`<dynamic-array [config]="arrayConfig" [(ngModel)]="arrayModel" />`
 
-**arrayConfig**
+**arrayConfig**     
 Config to generate form lists.
 
 - `functions`: List functions 
   - ['add', 'edit', 'delete']
 - `formConfig`: formConfig, see `<dynamic-form>`
 
-**arrayModel**
+**arrayModel**     
 Array list value.
 
-**Array Demo**
+**Array Demo**     
 ![image](http://o905ne85q.bkt.clouddn.com/%7BE67FE85C-D16A-4153-A287-6C011706975D%7D.png)
 
-3. `<dynamic-list [config]="listConfig" [(ngModel)]="listModel" />`
+### Form List Components
+**component demo**     
+`<dynamic-list [config]="listConfig" [(ngModel)]="listModel" />`
 
-**listConfig**
+**listConfig**     
 Config to generate form list tables.
 
 - `functions`: List functions 
   - ['add', 'edit', 'delete']
 - `formConfig`: formConfig, see `<dynamic-form>`
 
-**listModel**
+**listModel**     
 Array table value.
 
-**List Demo**
+**List Demo**     
 ![image](http://o905ne85q.bkt.clouddn.com/%7BB13663E4-7BAF-4836-9275-2088D760ECF1%7D.png)
 
-### Form Control Types
-**By now we support these form control types:**
+## Form Control Types
+**By now we support these form control types:**     
 - 'text': `<input type="text" />`
 - 'number': `<input type="number" />`
 - 'select': `<select>`
@@ -100,7 +105,7 @@ Array table value.
 - 'upload-image': images upload with certain limits, such as width/height/size/type
 
 ### Config of Each Control
-**Each control is defined up to these configs:**
+**Each control is defined up to these configs:**    
 - `type (string)`: control type(`'text'`, `'number'`, `'select'`, `'radio'` and more)
 - `label (string)`: label for the control
 - `key (string)`: key(to connect the data or model and get value) for the control
