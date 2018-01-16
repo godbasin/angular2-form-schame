@@ -99,7 +99,6 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   onValueChanged(data?: any) {
-      console.log('onValueChanged', {data})
     if (!this.dynamicForm) {
       return;
     }

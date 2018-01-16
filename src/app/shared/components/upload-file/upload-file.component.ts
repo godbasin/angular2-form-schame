@@ -56,7 +56,7 @@ export class UploadFileComponent implements OnInit {
         this.model = [];
         this.checkErrArr = [];
         // Get files.
-        const input = this.el.nativeElement.find('input')[0];
+        const input = $(this.el.nativeElement).find('input')[0];
         const files = input.files;
         if (files) {
             // Travelsal files.

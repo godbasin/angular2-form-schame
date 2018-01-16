@@ -9,12 +9,20 @@ import {customInputAccessor} from './custom-input';
 @Component({
     selector: 'radio-with-input',
     template: `
-        <span *ngFor="let op of options" class="form-check">
+        <label class="radio-inline" *ngFor="let op of options">
             <input type="radio" [disabled]="disabled" [checked]="model.id == op.id"
-                   [value]="op.id" (click)="setValue(op)" />{{op.text}}
+                   [value]="op.id" (click)="setValue(op)" [style.marginTop]="op.withInput ? '12px': '4px'" />{{op.text}}
             <input *ngIf="op.withInput" class="form-control form-inline-input"
                    [type]="op.type || 'text'" [disabled]="model.id != op.id" [(ngModel)]="op.param" />
-        </span>`,
+        </label>`,
+        styles: [
+          `
+          .form-inline-input {
+              width: 100px;
+              display: inline-block;
+          }
+          `
+        ],
     providers: [customInputAccessor(RadioWithTextComponent)]
 })
 // ControlValueAccessor: A bridge between a control and a native element.

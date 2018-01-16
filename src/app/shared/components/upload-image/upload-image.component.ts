@@ -15,6 +15,36 @@ export interface ILimit {
 @Component({
     selector: 'upload-image',
     templateUrl: './upload-image.component.html',
+    styles: [`.btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type="file"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: #fff;
+        cursor: inherit;
+        display: block;
+    }
+    .upload-image-show {
+        width: 200px;
+        height: 100px;
+        border: dashed 2px #ccc;
+    }
+    .img-contain {
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    `],
     providers: [customInputAccessor(UploadImageComponent)]
 })
 export class UploadImageComponent implements OnInit {
@@ -59,7 +89,7 @@ export class UploadImageComponent implements OnInit {
         this.model = [];
         this.checkErrArr = [];
         // Get files.
-        const input = this.el.nativeElement.find('input')[0];
+        const input = $(this.el.nativeElement).find('input')[0];
         const files = input.files;
         if (files) {
             // Travelsal files.

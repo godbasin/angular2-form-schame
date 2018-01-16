@@ -9,9 +9,9 @@ import {customInputAccessor, CustomInputComponent} from './custom-input';
 @Component({
     selector: 'radio-group',
     template: `
-        <span *ngFor="let op of options" class="form-check">
+        <label class="radio-inline" *ngFor="let op of options">
             <input type="radio" [(ngModel)]="value" [name]="value" [disabled]="disabled" [value]="op.id"/>{{op.text}}
-        </span>`,
+        </label>`,
     providers: [customInputAccessor(RadioGroupComponent)]
 })
 // ControlValueAccessor: A bridge between a control and a native element.
