@@ -31,7 +31,7 @@
                 <h4 class="modal-title">{{isEdit > -1 ? 'Edit' : 'New'}}</h4>
             </div>
             <div class="modal-body">
-                <dynamic-form *ngIf="isShown" [config]="formConfig" [(model)]="formModel"></dynamic-form>
+                <dynamic-form [config]="formConfig" [(model)]="formModel"></dynamic-form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancel</button>

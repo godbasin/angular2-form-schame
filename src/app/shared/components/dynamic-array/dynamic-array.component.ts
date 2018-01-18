@@ -61,7 +61,6 @@ export class DynamicArrayComponent implements OnInit, OnChanges {
                 label: control.label
             };
         });
-        console.log('updateConfig', this.listConfig.content)
         this.model = []
     }
 

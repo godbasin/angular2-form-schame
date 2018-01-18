@@ -51,23 +51,27 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.updateConfig();
+    this.updateConfig(true);
   }
 
   ngOnChanges(changes) {
     if (changes.config && !changes.config.firstChange) {
       this.updateConfig();
+    } else if (changes.model) {
+      this.updateConfig(true);
     }
   }
 
-  updateConfig() {
+  updateConfig(isInit?: boolean) {
     // Set messages for validations.
     this.customGroup = [];
-    // for enumerable properties
-    // clear properties
-    Object.keys(this.model).forEach((prop) => {
-      delete this.model[prop];
-    });
+    if (!isInit) {
+      // for enumerable properties
+      // clear properties
+      Object.keys(this.model).forEach(prop => {
+        delete this.model[prop];
+      });
+    }
     this.config.forEach((control: ICustomControl, i) => {
       this.validationMessages[control.key] = {};
       const validations = [];

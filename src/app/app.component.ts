@@ -275,12 +275,12 @@ export class AppComponent implements OnInit {
   jsonConfig: string = "";
   listConfig: IListFormConfig = {};
   formConfig: ICustomControl[] = [];
-  schameType: string = "Simple";
+  schameType: string = "AllFormComponents";
   formModel: any = {};
   listModel: any = [];
 
   ngOnInit() {
-    this.schameType = "Simple";
+    this.schameType = "AllFormComponents";
     this.formConfig = schameMap[this.schameType].config;
     this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
   }

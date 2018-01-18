@@ -119,10 +119,10 @@ export class DateTimePickerComponent implements AfterViewInit {
 
   // Write a new value to the element.
   writeValue(value: string): void {
-    if (value && value !== this.model) {
+    if (value !== this.model) {
       this.model = value;
       const vd = new Date((+value) * 1000); // multiply 1000 for server timestamp
-      this.viewValue = (vd as IDate).format(this.formatStr);
+      this.viewValue = this.useTimestamp ? (vd as IDate).format(this.formatStr) : value;
     }
   }
 

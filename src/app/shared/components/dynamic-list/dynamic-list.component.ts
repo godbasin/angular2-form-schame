@@ -87,6 +87,7 @@ export class DynamicListComponent implements OnInit, OnChanges {
             // If add, clear formModel.
             this.formModel = {};
         }
+        console.log('edit', this.formModel)
         this.isShown = true;
         $(this.el.nativeElement).find('.modal').modal("show");
     }
