@@ -72,6 +72,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         delete this.model[prop];
       });
     }
+    // console.log(this.config)
     this.config.forEach((control: ICustomControl, i) => {
       this.validationMessages[control.key] = {};
       const validations = [];

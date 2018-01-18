@@ -21,6 +21,7 @@ import {DynamicListComponent} from './components/dynamic-list/dynamic-list.compo
 import {DynamicArrayComponent} from './components/dynamic-array/dynamic-array.component';
 import {JSONEditorComponent} from './components/json-editor.component';
 import {JsonToHtmlComponent} from './components/json-to-html.component';
+import {SchemaFormComponent} from './schema-form.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {JsonToHtmlComponent} from './components/json-to-html.component';
     SelectWithInputComponent,
     JSONEditorComponent,
     JsonToHtmlComponent,
+    SchemaFormComponent,
 
     OnFocusLostDirective
   ],
@@ -58,6 +60,7 @@ import {JsonToHtmlComponent} from './components/json-to-html.component';
     SelectWithInputComponent,
     JSONEditorComponent,
     JsonToHtmlComponent,
+    SchemaFormComponent,
 
     OnFocusLostDirective
   ],

@@ -1,0 +1,3 @@
+<dynamic-form *ngIf="schameType == 'form'" [config]="formConfig" [(model)]="formModel"></dynamic-form>
+<dynamic-array *ngIf="schameType == 'array'" [config]="listConfig" [(ngModel)]="listModel"></dynamic-array>
+<dynamic-list *ngIf="schameType == 'list'" [config]="listConfig" [(ngModel)]="listModel"></dynamic-list>
