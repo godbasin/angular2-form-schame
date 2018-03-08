@@ -30,7 +30,7 @@ export class CheckboxWithTextComponent implements OnInit {
   @Input() options: IOptions[] = []; // object: {id, text} or array: []
   @Input() disabled: boolean = false;
 
-  private model: any = {}; // inner value
+  model: any = {}; // inner value
   private onChange: (_: any) => void;
   private onTouched: () => void;
 

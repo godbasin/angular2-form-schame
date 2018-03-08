@@ -7,7 +7,7 @@ import {
   OnChanges
 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ILimit } from "angular-form-components/src/upload-image/upload-image.component";
+import { ILimit } from "@shared/components/upload-image/upload-image.component";
 import { IListFormConfig } from "@shared/components/dynamic-list/dynamic-list.component";
 import { validate } from "../../tool/validate.tool";
 
@@ -65,7 +65,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.customGroup = [];
     // for enumerable properties
     // clear properties
-    Object.keys(this.model).forEach((prop) => {
+    Object.keys(this.model).forEach(prop => {
       delete this.model[prop];
     });
     this.config.forEach((control: ICustomControl, i) => {

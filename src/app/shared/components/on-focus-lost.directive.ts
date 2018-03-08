@@ -3,12 +3,19 @@
  * how to use: <div ngFocusLost (onFocusLost)="yourFunction()"></div>
  */
 
-import {Directive, EventEmitter, ElementRef, AfterViewInit, OnDestroy, Output} from '@angular/core';
+import {
+  Directive,
+  EventEmitter,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  Output
+} from "@angular/core";
 
 @Directive({
-  selector: '[ngFocusLost]'
+  selector: "[ngFocusLost]"
 })
-export class OnFocusLostDirective implements AfterViewInit, OnDestroy{
+export class OnFocusLostDirective implements AfterViewInit, OnDestroy {
   @Output() onFocusLost = new EventEmitter();
   public el;
 
@@ -16,8 +23,8 @@ export class OnFocusLostDirective implements AfterViewInit, OnDestroy{
     this.el = el.nativeElement;
   }
 
-  ngAfterViewInit(){
-    document.addEventListener('click', this.onClick.bind(this), true);
+  ngAfterViewInit() {
+    document.addEventListener("click", this.onClick.bind(this), true);
   }
 
   onClick(ev) {
@@ -26,9 +33,7 @@ export class OnFocusLostDirective implements AfterViewInit, OnDestroy{
     }
   }
 
-  ngOnDestroy(){
-    document.removeEventListener('click', this.onClick.bind(this), true);
+  ngOnDestroy() {
+    document.removeEventListener("click", this.onClick.bind(this), true);
   }
 }
-
-

@@ -23,7 +23,7 @@ import JSONEditor from "jsoneditor/dist/jsoneditor.min.js";
 export class JSONEditorComponent implements AfterViewInit {
   @Input() options: Object = {};
   @Input() isEdit: boolean = false;
-  private model: any; // inner value
+  model: any; // inner value
   private onChange: (_: any) => void;
   private onTouched: () => void;
 
