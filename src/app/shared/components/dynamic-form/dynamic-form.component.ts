@@ -65,9 +65,10 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.customGroup = [];
     // for enumerable properties
     // clear properties
-    Object.keys(this.model).forEach(prop => {
-      delete this.model[prop];
-    });
+    // but why???
+    // Object.keys(this.model).forEach(prop => {
+    //   delete this.model[prop];
+    // });
     this.config.forEach((control: ICustomControl, i) => {
       this.validationMessages[control.key] = {};
       const validations = [];

@@ -287,9 +287,11 @@ export class AppComponent implements OnInit {
 
   changeSchame(val) {
     if (["Array List", "Array"].indexOf(this.schameType) > -1) {
+      this.listModel = [];
       this.listConfig = schameMap[this.schameType];
       this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
     } else {
+      this.formModel = {};
       this.formConfig = schameMap[this.schameType].config;
       this.jsonConfig = JSON.stringify(schameMap[this.schameType]);
     }

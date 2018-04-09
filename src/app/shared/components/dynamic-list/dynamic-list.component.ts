@@ -21,11 +21,12 @@ export interface IListFormConfig {
 @Component({
   selector: "dynamic-list",
   templateUrl: "./dynamic-list.component.html",
+  styleUrls: ["./dynamic-list.component.css"],
   providers: [customInputAccessor(DynamicListComponent)]
 })
 export class DynamicListComponent implements OnInit, OnChanges {
   @Input() config: IListFormConfig;
-  @Input() formModel: any = []; // form default data
+  formModel: any = {}; // form default data
 
   listConfig: IListConfig = {} as any;
   formConfig: ICustomControl[];
@@ -82,15 +83,13 @@ export class DynamicListComponent implements OnInit, OnChanges {
     this.isEdit = index;
     if (index > -1) {
       // If edit, deep copy option into formModel.
-      this.formModel = ObjectCopy(this.model[index]);
+      this.formModel = Object.assign(this.formModel, ObjectCopy(this.model[index]));
     } else {
       // If add, clear formModel.
       this.formModel = {};
     }
+    console.log(this.formModel)
     this.isShown = true;
-    $(this.el.nativeElement)
-      .find(".modal")
-      .modal("show");
   }
 
   // delete one list data
@@ -111,9 +110,6 @@ export class DynamicListComponent implements OnInit, OnChanges {
     }
     this.onChange(this.model);
     this.isShown = false;
-    $(this.el.nativeElement)
-      .find(".modal")
-      .modal("hide");
   }
 
   // Set touched on blur
